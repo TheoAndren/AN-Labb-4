@@ -11,11 +11,11 @@ namespace AnLabb4.API.Controllers
     [ApiController]
     public class PersonController : ControllerBase
     {
-        private IAnLabb4<Person> _interest;
+        private IAnLabb4<Person> _anlabb4;
 
-        public PersonController(IAnLabb4<Person> interest)
+        public PersonController(IAnLabb4<Person> anlabb4)
         {
-            _interest = interest;
+            _anlabb4 = anlabb4;
         }
 
         [HttpGet]
@@ -23,7 +23,7 @@ namespace AnLabb4.API.Controllers
         {
             try
             {
-                return Ok(await _interest.GetAll());
+                return Ok(await _anlabb4.GetAll());
             }
             catch (Exception)
             {
@@ -37,7 +37,7 @@ namespace AnLabb4.API.Controllers
         {
             try
             {
-                var result = await _interest.GetSingle(id);
+                var result = await _anlabb4.GetSingle(id);
                 if (result == null)
                 {
                     return NotFound();
@@ -59,7 +59,7 @@ namespace AnLabb4.API.Controllers
                 {
                     return BadRequest();
                 }
-                var createdPerson = await _interest.Add(newPerson);
+                var createdPerson = await _anlabb4.Add(newPerson);
                 return CreatedAtAction(nameof(GetPerson), new { id = createdPerson.PersonId }, createdPerson);
             }
             catch (Exception)
@@ -74,12 +74,12 @@ namespace AnLabb4.API.Controllers
         {
             try
             {
-                var interestToDelete = await _interest.GetSingle(id);
+                var interestToDelete = await _anlabb4.GetSingle(id);
                 if (interestToDelete == null)
                 {
                     return NotFound($"Person with id {id} not found");
                 }
-                return await _interest.Delete(id);
+                return await _anlabb4.Delete(id);
             }
             catch (Exception)
             {
@@ -97,12 +97,12 @@ namespace AnLabb4.API.Controllers
                 {
                     return BadRequest("Person id doesn't match");
                 }
-                var personToUpdate = await _interest.GetSingle(id);
+                var personToUpdate = await _anlabb4.GetSingle(id);
                 if (personToUpdate == null)
                 {
                     return NotFound($"Product with id {id} not found");
                 }
-                return await _interest.Update(person);
+                return await _anlabb4.Update(person);
             }
             catch (Exception)
             {

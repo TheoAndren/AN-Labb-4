@@ -11,11 +11,11 @@ namespace AnLabb4.API.Controllers
     [ApiController]
     public class WebsiteController : ControllerBase
     {
-        private readonly IAnLabb4<Website> _interest;
+        private readonly IAnLabb4<Website> _anlabb4;
 
-        public WebsiteController(IAnLabb4<Website> interest)
+        public WebsiteController(IAnLabb4<Website> anlabb4)
         {
-            _interest = interest;
+            _anlabb4 = anlabb4;
         }
 
         [HttpGet]
@@ -23,7 +23,7 @@ namespace AnLabb4.API.Controllers
         {
             try
             {
-                return Ok(await _interest.GetAll());
+                return Ok(await _anlabb4.GetAll());
             }
             catch (Exception)
             {
@@ -37,7 +37,7 @@ namespace AnLabb4.API.Controllers
         {
             try
             {
-                var result = await _interest.GetSingle(id);
+                var result = await _anlabb4.GetSingle(id);
                 if (result == null)
                 {
                     return NotFound();
@@ -60,7 +60,7 @@ namespace AnLabb4.API.Controllers
                 {
                     return BadRequest();
                 }
-                var createdWebsite = await _interest.Add(newWebsite);
+                var createdWebsite = await _anlabb4.Add(newWebsite);
                 return CreatedAtAction(nameof(GetWebsite), new { id = createdWebsite.WebsiteId }, createdWebsite);
             }
             catch (Exception)
@@ -79,12 +79,12 @@ namespace AnLabb4.API.Controllers
                 {
                     return BadRequest("Website id doesn't match");
                 }
-                var websiteToUpdate = await _interest.GetSingle(id);
+                var websiteToUpdate = await _anlabb4.GetSingle(id);
                 if (websiteToUpdate == null)
                 {
                     return NotFound($"Website with id {id} not found");
                 }
-                return await _interest.Update(web);
+                return await _anlabb4.Update(web);
             }
             catch (Exception)
             {
@@ -98,7 +98,7 @@ namespace AnLabb4.API.Controllers
         {
             try
             {
-                var result = await _interest.WebsitesPerPerson(id);
+                var result = await _anlabb4.WebsitesPerPerson(id);
                 if (result == null)
                 {
                     return NotFound();
@@ -121,7 +121,7 @@ namespace AnLabb4.API.Controllers
                 {
                     BadRequest();
                 }
-                var createdPersonWebsite = await _interest.AddPersonWebsite(newWebsite, personId, interestId);
+                var createdPersonWebsite = await _anlabb4.AddPersonWebsite(newWebsite, personId, interestId);
                 return CreatedAtAction(nameof(GetWebsite), new { id = createdPersonWebsite.WebsiteId }, createdPersonWebsite);
             }
             catch (Exception)

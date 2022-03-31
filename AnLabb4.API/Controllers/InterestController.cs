@@ -11,11 +11,11 @@ namespace AnLabb4.API.Controllers
     [ApiController]
     public class InterestController : ControllerBase
     {
-        private readonly IAnLabb4<Interest> _interest;
+        private readonly IAnLabb4<Interest> _anlabb4;
 
-        public InterestController(IAnLabb4<Interest> interest)
+        public InterestController(IAnLabb4<Interest> anlabb4)
         {
-            _interest = interest;
+            _anlabb4 = anlabb4;
         }
 
         [HttpGet]
@@ -23,7 +23,7 @@ namespace AnLabb4.API.Controllers
         {
             try
             {
-                return Ok(await _interest.GetAll());
+                return Ok(await _anlabb4.GetAll());
             }
             catch (Exception)
             {
@@ -37,7 +37,7 @@ namespace AnLabb4.API.Controllers
         {
             try
             {
-                var result = await _interest.InterestsPerPerson(id);
+                var result = await _anlabb4.InterestsPerPerson(id);
                 if (result == null)
                 {
                     return NotFound();
@@ -56,7 +56,7 @@ namespace AnLabb4.API.Controllers
         {
             try
             {
-                var result = await _interest.GetSingle(id);
+                var result = await _anlabb4.GetSingle(id);
                 if (result == null)
                 {
                     return NotFound();
@@ -79,7 +79,7 @@ namespace AnLabb4.API.Controllers
                 {
                     BadRequest();
                 }
-                var createdInterest = await _interest.Add(newInterest);
+                var createdInterest = await _anlabb4.Add(newInterest);
                 return CreatedAtAction(nameof(GetInterest), new { id = newInterest.InterestId }, createdInterest);
             }
             catch (Exception)
@@ -94,12 +94,12 @@ namespace AnLabb4.API.Controllers
         {
             try
             {
-                var interestToDelete = await _interest.GetSingle(id);
+                var interestToDelete = await _anlabb4.GetSingle(id);
                 if (interestToDelete == null)
                 {
                     return NotFound($"Interest with id {id} not found");
                 }
-                return await _interest.Delete(id);
+                return await _anlabb4.Delete(id);
             }
             catch (Exception)
             {
@@ -117,12 +117,12 @@ namespace AnLabb4.API.Controllers
                 {
                     return BadRequest("Interest id doesn't match");
                 }
-                var interestToUpdate = await _interest.GetSingle(id);
+                var interestToUpdate = await _anlabb4.GetSingle(id);
                 if (interestToUpdate == null)
                 {
                     return NotFound($"Interest with id {id} not found");
                 }
-                return await _interest.Update(interest);
+                return await _anlabb4.Update(interest);
             }
             catch (Exception)
             {
@@ -140,7 +140,7 @@ namespace AnLabb4.API.Controllers
                 {
                     BadRequest();
                 }
-                var createdPersonInterest = await _interest.AddPersonInterest(newInterest, id);
+                var createdPersonInterest = await _anlabb4.AddPersonInterest(newInterest, id);
                 return CreatedAtAction(nameof(GetInterest), new { id = createdPersonInterest.InterestId }, createdPersonInterest);
             }
             catch (Exception)
