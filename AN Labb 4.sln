@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32210.238
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AN Labb 4", "AN Labb 4\AN Labb 4.csproj", "{DAFD03BA-A553-4B63-A4B5-263969FDD2BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnLabb4.API", "AnLabb4.API\AnLabb4.API.csproj", "{C7CC4047-9301-4DC2-957B-8FAFDFB83A59}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DAFD03BA-A553-4B63-A4B5-263969FDD2BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAFD03BA-A553-4B63-A4B5-263969FDD2BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAFD03BA-A553-4B63-A4B5-263969FDD2BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAFD03BA-A553-4B63-A4B5-263969FDD2BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7CC4047-9301-4DC2-957B-8FAFDFB83A59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7CC4047-9301-4DC2-957B-8FAFDFB83A59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7CC4047-9301-4DC2-957B-8FAFDFB83A59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7CC4047-9301-4DC2-957B-8FAFDFB83A59}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F4CC25FD-7F26-4134-8659-49309078FEF9}
+	EndGlobalSection
+EndGlobal
